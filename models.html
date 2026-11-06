@@ -8,11 +8,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/style.css?v=4">
   <title>無料モデルを選ぶ — LLM START</title>
   <script src="assets/catalog.js" defer></script>
-  <script src="assets/core.js?v=3" defer></script>
-  <script src="assets/app.js?v=3" defer></script>
+  <script src="assets/core.js?v=4" defer></script>
+  <script src="assets/app.js?v=4" defer></script>
 </head>
 <body data-page="models">
   <a class="skip-link" href="#main">本文へスキップ</a>
@@ -26,7 +26,7 @@
         <a href="models.html" data-nav="models" aria-current="page">無料モデル</a>
         <a href="compare.html" data-nav="compare">ツール比較</a>
         <a href="faq.html" data-nav="faq">困ったとき</a>
-        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-3" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
       </nav>
     </div>
   </header>
@@ -35,7 +35,7 @@
   <div class="breadcrumb"><a href="index.html">ホーム</a><span aria-hidden="true">/</span><span>無料モデル</span></div>
   <header class="page-intro"><p class="eyebrow">START SMALL, FIND YOUR FIT</p><h1>最初のモデルは、<br>小さくていい。</h1><p>まずは動くことを確かめて、必要に応じて大きくする。<br>基本コースでは、コード向けのQwen2.5-Coderを使います。</p></header>
   <div class="notice"><strong>公式の容量と、PCの目安を分けて見ましょう。</strong><p>容量はOllamaで確認した配布ファイルの値です。RAM・VRAMの記載は当サイトの選び方で、公式の最低要件や動作保証ではありません。OS・アプリ・会話の長さにもメモリを使います。情報確認日：2026-11-06。</p></div>
-<section id="model-selector" class="model-picker-section"><h2>モデルを変えたいときだけ</h2><p>セットアップは軽量な1.5Bモデルで、そのまま進められます。別の候補を試す場合だけ、ここで変更してください。</p><section class="spec-selector" aria-labelledby="spec-title"><div class="panel-heading"><h3 id="spec-title">あなたのPCを教えてください</h3><span class="tag">手動で選択</span></div><p>調べた項目だけ選べばOK。入力内容はサーバーに送りません。</p><div class="spec-fields"><div><label for="ram">RAM（PC全体のメモリ）</label><select id="ram"><option value="unknown">わからない</option><option value="low">8 GB未満</option><option value="8">8 GB</option><option value="16">16 GB</option><option value="32">32 GB</option><option value="64">64 GB以上</option></select></div><div><label for="gpu">GPUの種類</label><select id="gpu"><option value="unknown">わからない</option><option value="integrated">専用GPUなし／内蔵GPU</option><option value="nvidia">NVIDIAの専用GPU</option><option value="amd">AMDの専用GPU</option><option value="intel">Intelの専用GPU</option><option value="other">その他の専用GPU</option></select></div><div><label for="vram">専用GPUメモリ（VRAM）</label><select id="vram"><option value="unknown">わからない／専用GPUなし</option><option value="low">4 GB未満</option><option value="4">4〜7 GB</option><option value="8">8〜11 GB</option><option value="12">12〜15 GB</option><option value="16">16〜23 GB</option><option value="24">24 GB以上</option></select></div></div><a class="text-link" href="guide.html#step-1">調べ方をもう一度見る <span aria-hidden="true">↑</span></a>
+<section id="model-selector" class="model-picker-section"><h2>モデルを変えたいときだけ</h2><p>セットアップは軽量な1.5Bモデルで、そのまま進められます。別の候補を試す場合だけ、ここで変更してください。</p><section class="spec-selector" aria-labelledby="spec-title"><div class="panel-heading"><h3 id="spec-title">あなたのPCを教えてください</h3><span class="tag">手動で選択</span></div><p>調べた項目だけ選べばOK。入力内容はサーバーに送りません。</p><div class="spec-fields"><div><label for="ram">RAM（PC全体のメモリ）</label><select id="ram"><option value="unknown">わからない</option><option value="low">8 GB未満</option><option value="8">8 GB</option><option value="16">16 GB</option><option value="32">32 GB</option><option value="64">64 GB以上</option></select></div><div><label for="gpu">GPUの種類</label><select id="gpu"><option value="unknown">わからない</option><option value="integrated">専用GPUなし／内蔵GPU</option><option value="nvidia">NVIDIAの専用GPU</option><option value="amd">AMDの専用GPU</option><option value="intel">Intelの専用GPU</option><option value="other">その他の専用GPU</option></select></div><div><label for="vram">専用GPUメモリ（VRAM）</label><select id="vram"><option value="unknown">わからない／専用GPUなし</option><option value="low">4 GB未満</option><option value="4">4〜7 GB</option><option value="8">8〜11 GB</option><option value="12">12〜15 GB</option><option value="16">16〜23 GB</option><option value="24">24 GB以上</option></select></div></div>
         <div class="recommendation" aria-live="polite" aria-atomic="true"><p class="eyebrow">まず試す候補</p><h4 id="recommend-name">Qwen2.5-Coder <span>1.5B</span></h4><p id="recommend-reason">スペックが不明なときは、軽量モデルから動作を確認します。</p><div class="recommend-facts"><span>配布ファイル <strong id="recommend-size">986 MB</strong></span><span>ローカル推論 <strong>API利用料なし</strong></span></div><p class="recommend-warning" id="recommend-warning" hidden></p></div>
         <div class="model-choice"><label for="model-choice">セットアップで使うモデル</label><select id="model-choice"><option value="auto">PCの選択に合わせる（自動提案）</option><option value="qwen2.5-coder:0.5b">0.5B · 動作確認用</option><option value="qwen2.5-coder:1.5b">1.5B · 軽量</option><option value="qwen2.5-coder:7b">7B · メモリに余裕があるPC</option><option value="qwen2.5-coder:14b">14B · 余裕のあるPCで追加検討</option></select><p>選んだモデルに合わせて、以降のコマンドと設定例が切り替わります。</p></div>
       </section><p class="source-note">GPU対応や動作速度はPCごとに異なります。提案は公式の最低要件や動作保証ではありません。</p></section>
@@ -52,7 +52,7 @@
 </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-3">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
     <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
     <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
   </footer>

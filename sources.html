@@ -8,11 +8,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/style.css?v=4">
   <title>出典・更新情報 — LLM START</title>
   <script src="assets/catalog.js" defer></script>
-  <script src="assets/core.js?v=3" defer></script>
-  <script src="assets/app.js?v=3" defer></script>
+  <script src="assets/core.js?v=4" defer></script>
+  <script src="assets/app.js?v=4" defer></script>
 </head>
 <body data-page="sources">
   <a class="skip-link" href="#main">本文へスキップ</a>
@@ -26,7 +26,7 @@
         <a href="models.html" data-nav="models">無料モデル</a>
         <a href="compare.html" data-nav="compare">ツール比較</a>
         <a href="faq.html" data-nav="faq">困ったとき</a>
-        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-3" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
       </nav>
     </div>
   </header>
@@ -39,12 +39,12 @@
     <section><h2>モデル・比較情報</h2><ul class="source-list"><li><a href="https://ollama.com/library/qwen2.5-coder" target="_blank" rel="noopener noreferrer">Ollama：Qwen2.5-Coder配布一覧 ↗</a><small>0.5B 398 MB / 1.5B 986 MB / 7B 4.7 GB / 14B 9.0 GB。確認日 2026-11-06</small></li><li><a href="https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct" target="_blank" rel="noopener noreferrer">Qwen：1.5Bモデルカード ↗</a><small>提供元の説明・ライセンス。各サイズのリンクは無料モデルページに掲載</small></li><li><a href="https://ollama.com/library/qwen3.5" target="_blank" rel="noopener noreferrer">Ollama：Qwen3.5配布一覧 ↗</a><small>追加候補の容量と形式。確認日 2026-11-06</small></li><li><a href="https://cursor.com/pricing" target="_blank" rel="noopener noreferrer">Cursor：料金 ↗</a><small>無料枠の制限、プランと追加料金。確認日 2026-11-06</small></li><li><a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noopener noreferrer">OpenAI：Codex / ChatGPTの料金と利用枠 ↗</a><small>プランごとの提供条件とAPI料金との違い。確認日 2026-11-06</small></li><li><a href="https://learn.chatgpt.com/docs/developer-commands?surface=cli" target="_blank" rel="noopener noreferrer">OpenAI：Codex CLI仕様 ↗</a><small>--ossと--local-providerの対応。確認日 2026-11-06</small></li></ul><p>外部サービスの年齢・契約条件は、<a href="compare.html#terms">ツール比較の公式規約リンク</a>から確認できます。</p></section>
     <section><h2>確認できたこと、確認が必要なこと</h2><p>リンク先の公式文書から、配布容量、設定形式、OS条件を確認しています。RAM・VRAMからの提案は当サイトの目安で、個別のPCでの実測・動作保証ではありません。</p><p>インストーラー・拡張機能の画面は更新で変わります。すべてのPCでの導入、各モデルの日本語品質・生成コードの正しさ、各GPUでの速度は検証していません。Continueの現行クラウド規約と年齢条件、Cursorの全機能のローカル対応も未確認です。未確認の内容を標準手順の前提にはしていません。</p></section>
     <section id="privacy"><h2>このサイトのデータの扱い</h2><ul><li>APIキー、氏名、メールアドレス、支払い情報の入力・収集機能はありません。</li><li>完了した手順、現在のステップ、手動選択したRAM・GPU・VRAM、モデルをブラウザのlocalStorageに保存します。PC情報を自動取得しません。</li><li>サイトのJavaScriptは通信を行いません。外部フォント、広告、解析スクリプト、外部CDNは使用しません。</li><li>配信サービスは通常のアクセス記録などを処理する場合があります。外部リンクを開いた先には、その提供元の規約とプライバシーポリシーが適用されます。</li><li>進捗を消すにはガイドのリセットを使います。モデル設定も含めて消すには、ブラウザでこのサイトの保存データを削除します。</li><li>本サイトはVS Code・Ollama・拡張機能自体の通信や、AIが提案するコードを制御するものではありません。</li></ul></section>
-    <section><h2>更新履歴</h2><div class="update-row"><time datetime="2026-11-06">2026.11.06</time><div><strong>モデル選択の手順を削除</strong><p>導入ガイドを全7ステップに整理しました。PC確認からVS Codeのインストールへ進めます。モデルの変更は無料モデルのページで任意に行えます。</p></div></div><div class="update-row"><time datetime="2026-11-06">2026.11.06</time><div><strong>全面リニューアル</strong><p>ホームとガイドを分離。8ステップを再構成し、PC確認・日本語化・HTML保存と実行・安全確認を追加。モデルの容量とPC選択の目安を区別しました。</p></div></div><p class="source-note">長く使える情報を保つため、公開運営者は仕様変更時と定期点検時に公式資料を再確認してください。自動更新・自動監視の機能はありません。</p></section>
+    <section><h2>更新履歴</h2><div class="update-row"><time datetime="2026-11-06">2026.11.06</time><div><strong>VS Codeのインストールから開始</strong><p>PCスペック確認の手順も削除し、全6ステップに整理しました。最初の画面からVS Codeのインストールへ進めます。</p></div></div><div class="update-row"><time datetime="2026-11-06">2026.11.06</time><div><strong>モデル選択の手順を削除</strong><p>導入ガイドを全7ステップに整理しました。PC確認からVS Codeのインストールへ進めます。モデルの変更は無料モデルのページで任意に行えます。</p></div></div><div class="update-row"><time datetime="2026-11-06">2026.11.06</time><div><strong>全面リニューアル</strong><p>ホームとガイドを分離。8ステップを再構成し、PC確認・日本語化・HTML保存と実行・安全確認を追加。モデルの容量とPC選択の目安を区別しました。</p></div></div><p class="source-note">長く使える情報を保つため、公開運営者は仕様変更時と定期点検時に公式資料を再確認してください。自動更新・自動監視の機能はありません。</p></section>
   </div>
 </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-3">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
     <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
     <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
   </footer>

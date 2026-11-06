@@ -8,11 +8,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/style.css?v=4">
   <title>LLMの基礎知識 — LLM START</title>
   <script src="assets/catalog.js" defer></script>
-  <script src="assets/core.js?v=3" defer></script>
-  <script src="assets/app.js?v=3" defer></script>
+  <script src="assets/core.js?v=4" defer></script>
+  <script src="assets/app.js?v=4" defer></script>
 </head>
 <body data-page="learn">
   <a class="skip-link" href="#main">本文へスキップ</a>
@@ -26,7 +26,7 @@
         <a href="models.html" data-nav="models">無料モデル</a>
         <a href="compare.html" data-nav="compare">ツール比較</a>
         <a href="faq.html" data-nav="faq">困ったとき</a>
-        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-3" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
       </nav>
     </div>
   </header>
@@ -40,11 +40,11 @@
       <dl class="term-list"><div id="llm"><dt>LLM <small>Large Language Model / 大規模言語モデル</small></dt><dd>たくさんの文章などから学び、入力された言葉の続きや返事を作るAIの一種です。説明文やコードを書けますが、正しさを保証する辞書や計算機ではありません。</dd></div><div id="model"><dt>AIモデル <small>AIが学習したデータのまとまり</small></dt><dd>AIの「頭脳」にあたるもの。Ollamaはそれを動かすアプリ、Qwen2.5-Coderはそのアプリで使えるモデルの名前です。1.5BなどのBは、モデルの規模を表す単位で、GBというファイル容量とは違います。</dd></div><div><dt>ローカルAI <small>自分のPCで処理するAI</small></dt><dd>モデルを自分のPCに保存して使う方法です。最初の取得やソフトの更新にはネット接続を使います。ローカルモデルを選ぶだけで、アプリ全体の通信がなくなるわけではありません。</dd></div><div id="api"><dt>API / APIキー <small>ソフト同士の窓口 / 秘密の合鍵</small></dt><dd>APIは、ほかのソフトに「これを処理して」と頼むための窓口です。クラウドAPIではAPIキーで利用者を識別し、料金が発生する場合があります。今回のOllamaの窓口はPC内にあり、キーは使いません。他人のキーを使ったり、自分のキーを公開したりしないでください。</dd></div><div id="token"><dt>トークン / コンテキスト <small>文章の数え方 / AIが一度に扱う範囲</small></dt><dd>トークンは文章を細かく分けた単位です。日本語の1文字＝1トークンとは限りません。コンテキストには質問・会話・返答などが入ります。長くすると必要なメモリも増えるので、最初は短い質問から始めます。</dd></div><div id="ram"><dt>RAM <small>PC全体で使う作業用メモリ</small></dt><dd>作業机の広さのようなものです。ブラウザやエディター、AIが共有して使います。ストレージの空き容量とは別物で、モデルを保存できてもRAM不足で動かない場合があります。</dd></div><div id="vram"><dt>GPU / VRAM <small>計算を助ける装置 / その専用メモリ</small></dt><dd>GPUは多数の計算を並行して行う装置。対応していればAIの計算にも使えます。VRAMは主に専用GPU上のメモリです。内蔵GPUの「共有GPUメモリ」を専用VRAMとして数えません。容量だけで対応可否や速度は決まりません。</dd></div><div id="terminal"><dt>ターミナル / PowerShell <small>文字で操作する画面 / 指示を解釈するソフト</small></dt><dd>ターミナルは文字でコマンドを入力する場所、PowerShellはWindowsでその指示を扱うソフトです。VS CodeのターミナルでもPowerShellを開けます。知らないコマンドを貼り付ける前に、何をするかを確認します。</dd></div><div><dt>拡張機能 <small>アプリに機能を追加するもの</small></dt><dd>ContinueはVS CodeにAIのチャット欄などを追加する拡張機能です。拡張機能自身がAIモデルというわけではありません。発行元と公式リンクを確認して入れましょう。</dd></div><div id="agent"><dt>AIエージェント <small>道具を使って作業を進める仕組み</small></dt><dd>会話に答えるだけでなく、ファイル編集やコマンド実行などを提案・実施する仕組みです。どこまで任せるかは権限と設定によります。本コースはChatを使い、生成コードは人が確認して保存します。</dd></div></dl>
     </section>
   </div>
-  <div class="reading-cta"><div><h2>全部分からなくても、始められます。</h2><p>最初のステップは、PCの情報を見るだけ。</p></div><a class="button button-primary" href="guide.html#step-1">PCを確認する <span aria-hidden="true">→</span></a></div>
+  <div class="reading-cta"><div><h2>全部分からなくても、始められます。</h2><p>最初のステップは、VS Codeをインストールすること。</p></div><a class="button button-primary" href="guide.html#step-3">VS Codeを入れる <span aria-hidden="true">→</span></a></div>
 </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-3">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
     <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
     <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
   </footer>

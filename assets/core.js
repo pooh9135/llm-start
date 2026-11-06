@@ -6,7 +6,7 @@
   else root.LLMCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
-  const stepIds = Object.freeze([1, 3, 4, 5, 6, 7, 8]);
+  const stepIds = Object.freeze([3, 4, 5, 6, 7, 8]);
   const stepCount = stepIds.length;
   const modelIds = Object.freeze(['qwen2.5-coder:0.5b', 'qwen2.5-coder:1.5b', 'qwen2.5-coder:7b', 'qwen2.5-coder:14b']);
   const values = Object.freeze({ram: ['unknown', 'low', '8', '16', '32', '64'], gpu: ['unknown', 'integrated', 'nvidia', 'amd', 'intel', 'other'], vram: ['unknown', 'low', '4', '8', '12', '16', '24']});
@@ -17,9 +17,9 @@
     for (const key of Object.keys(values)) specs[key] = values[key].includes(s[key]) ? s[key] : 'unknown';
     if (specs.gpu === 'integrated') specs.vram = 'unknown';
     return {
-      version: 3,
+      version: 4,
       completed: Array.isArray(raw.completed) ? [...new Set(raw.completed.filter(n => stepIds.includes(n)))].sort((a, b) => a - b) : [],
-      currentStep: stepIds.includes(raw.currentStep) ? raw.currentStep : raw.currentStep === 2 ? 3 : 1,
+      currentStep: stepIds.includes(raw.currentStep) ? raw.currentStep : stepIds[0],
       specs,
       manualModel: modelIds.includes(raw.manualModel) ? raw.manualModel : null
     };
@@ -27,7 +27,7 @@
   function recommend(specs) {
     const s = normalizeState({specs}).specs;
     if (s.ram === 'low') return {id: modelIds[0], reason: 'RAMが8 GB未満のため、標準コースの対象外です。試すなら最小のモデルで基本動作だけを確認します。', warning: '0.5Bでも動作するとは限りません。アプリを閉じてもメモリが足りなければ、導入を中断してください。'};
-    if (s.ram === 'unknown' || s.ram === '8') return {id: modelIds[1], reason: 'まずは軽量な1.5Bで、回答の様子とPCへの負荷を確認します。専用GPUがなくてもCPUで試せますが、速度はPCによって変わります。', warning: s.ram === 'unknown' ? 'RAMが不明なため動作可否は判断できません。STEP 1で確認してからダウンロードしてください。' : ''};
+    if (s.ram === 'unknown' || s.ram === '8') return {id: modelIds[1], reason: 'まずは軽量な1.5Bで、回答の様子とPCへの負荷を確認します。専用GPUがなくてもCPUで試せますが、速度はPCによって変わります。', warning: s.ram === 'unknown' ? 'RAMが不明なため動作可否は判断できません。動作が重い場合は停止し、さらに小さなモデルを検討してください。' : ''};
     const dedicated = ['nvidia', 'amd', 'intel', 'other'].includes(s.gpu);
     const gpuMemory = dedicated && ['8', '12', '16', '24'].includes(s.vram);
     if (s.ram === '64' && dedicated && ['16', '24'].includes(s.vram)) return {id: modelIds[3], reason: 'RAMと専用GPUメモリに余裕がある選択です。14Bも追加候補になりますが、初回は1.5Bで接続を確かめてから切り替えても構いません。', warning: 'GPUの製品名・ドライバーによる対応確認が必要です。VRAMだけではGPUで動くことを保証できません。'};

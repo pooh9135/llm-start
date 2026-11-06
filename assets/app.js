@@ -6,11 +6,12 @@
   if (!core || !catalog) return;
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
-  const key = 'llm-start-state-v3';
-  const legacyKey = 'llm-start-state-v2';
+  const key = 'llm-start-state-v4';
+  const legacyKey = 'llm-start-state-v3';
+  const olderKey = 'llm-start-state-v2';
   let storageAvailable = true;
   let raw = null;
-  try { raw = JSON.parse(localStorage.getItem(key) ?? localStorage.getItem(legacyKey) ?? 'null'); } catch (e) { if (!(e instanceof SyntaxError)) storageAvailable = false; }
+  try { raw = JSON.parse(localStorage.getItem(key) ?? localStorage.getItem(legacyKey) ?? localStorage.getItem(olderKey) ?? 'null'); } catch (e) { if (!(e instanceof SyntaxError)) storageAvailable = false; }
   let state = core.normalizeState(raw);
   const announce = text => { $('#announcement').textContent = text; };
   function save() {
@@ -39,12 +40,12 @@
     $$('[data-step-link]').forEach(el => { const done = state.completed.includes(Number(el.dataset.stepLink)); el.classList.toggle('is-complete', done); $('.step-state', el).textContent = done ? '（完了）' : ''; });
     $$('[data-start]').forEach(el => {
       el.href = `guide.html#step-${state.currentStep}`;
-      const started = count > 0 || state.currentStep > 1;
+      const started = count > 0 || state.currentStep !== core.stepIds[0];
       el.firstChild.textContent = started ? 'ガイドを再開 ' : 'ガイドを始める ';
     });
     $$('[data-resume]').forEach(el => { el.href = `guide.html#step-${state.currentStep}`; });
     const homeResume = $('#home-resume');
-    if (homeResume) homeResume.hidden = count === 0 && state.currentStep === 1;
+    if (homeResume) homeResume.hidden = count === 0 && state.currentStep === core.stepIds[0];
     const allDone = $('#all-done');
     if (allDone) allDone.hidden = count !== core.stepCount;
   }
@@ -91,7 +92,7 @@
     if (!steps.length) return;
     const match = /^#step-([1-8])$/.exec(location.hash);
     const requested = match ? Number(match[1]) : state.currentStep;
-    const number = core.stepIds.includes(requested) ? requested : requested === 2 ? 3 : state.currentStep;
+    const number = core.stepIds.includes(requested) ? requested : (requested === 1 || requested === 2) ? core.stepIds[0] : state.currentStep;
     state.currentStep = number;
     const target = $(`#step-${number}`);
     steps.forEach(el => { el.hidden = Number(el.dataset.step) !== number; });
@@ -110,7 +111,7 @@
   $$('[data-complete]').forEach(el => el.addEventListener('change', () => {
     state = core.setComplete(state, Number(el.dataset.complete), el.checked);
     renderProgress(); save();
-    announce(state.completed.length === core.stepCount ? '全7ステップが完了しました。' : `${state.completed.length} / ${core.stepCount} ステップ完了。${storageAvailable ? '進捗を保存しました。' : 'この画面内でチェックしました。'}`);
+    announce(state.completed.length === core.stepCount ? '全6ステップが完了しました。' : `${state.completed.length} / ${core.stepCount} ステップ完了。${storageAvailable ? '進捗を保存しました。' : 'この画面内でチェックしました。'}`);
   }));
   const reset = $('#reset-progress');
   if (reset) reset.addEventListener('click', () => { state.completed = []; renderProgress(); save(); const panel = reset.closest('details'); panel.open = false; $('summary', panel).focus(); announce('完了チェックをリセットしました。'); });

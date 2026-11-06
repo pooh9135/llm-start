@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LLM、API、トークン、RAMとVRAM。ローカルAIの基本を、専門知識なしで学べます。">
+  <meta name="theme-color" content="#121212">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>LLMの基礎知識 — LLM START</title>
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/core.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-page="learn">
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="LLM START ホーム"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" hidden><span>メニュー</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <nav class="main-menu" id="main-menu" aria-label="メインナビゲーション">
+        <a href="guide.html" data-nav="guide">セットアップ</a>
+        <a href="learn.html" data-nav="learn" aria-current="page">LLMの基礎</a>
+        <a href="models.html" data-nav="models">無料モデル</a>
+        <a href="compare.html" data-nav="compare">ツール比較</a>
+        <a href="faq.html" data-nav="faq">困ったとき</a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <div class="storage-notice wrap" role="status" id="storage-notice" hidden>このブラウザでは進捗を保存できません。この画面内でチェックは使えますが、閉じると失われます。</div>
+  <main id="main" class="page-shell">
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span aria-hidden="true">/</span><span>LLMの基礎</span></div>
+  <header class="page-intro"><p class="eyebrow">A LITTLE KNOWLEDGE, A GOOD START</p><h1>むずかしい言葉を、<br>ひとつずつ。</h1><p>すべてを覚える必要はありません。<br>セットアップ中に気になったら、ここに戻ってきてください。</p></header>
+  <div class="article-body">
+    <section id="local-cloud"><h2>ローカルAIと、クラウドAI。</h2><p>違いは、AIの「頭脳」がどこで動くかです。このコースは、PCの中で動かす<strong>ローカルAI</strong>を使います。</p><div class="comparison-scroll" tabindex="0" role="region" aria-label="ローカルAIとクラウドAIの比較。横にスクロールできます"><table><thead><tr><th scope="col">比べる項目</th><th scope="col">ローカルAI</th><th scope="col">クラウドAI</th></tr></thead><tbody><tr><th scope="row">処理する場所</th><td>自分のPC</td><td>サービス提供元のサーバー</td></tr><tr><th scope="row">用意するもの</th><td>ソフト・モデル・PCの空き容量</td><td>通常はネット接続とアカウント。APIではキー等</td></tr><tr><th scope="row">費用</th><td>このコースのモデル推論にAPI料は不要。電気代・通信費等は別</td><td>無料枠・月額・従量料金など、サービスごとに異なる</td></tr><tr><th scope="row">できること</th><td>PCとモデルの性能に左右される</td><td>使えるモデル・機能・上限はプラン次第</td></tr><tr><th scope="row">情報の扱い</th><td>この設定の推論先はPC内。ソフト全体の通信とは別</td><td>入力が外部サービスに送られる。規約と保存方針を確認</td></tr></tbody></table></div><p>ローカルで動くAIも、間違った説明や不完全なコードを出すことがあります。<strong>回答を確かめること</strong>は、どちらを使う場合も大切です。</p></section>
+    <section><h2>よく出てくる言葉</h2><nav class="term-nav" aria-label="用語へ移動"><a href="#llm">LLM</a><a href="#model">モデル</a><a href="#api">API</a><a href="#token">トークン</a><a href="#ram">RAM</a><a href="#vram">VRAM</a><a href="#terminal">ターミナル</a><a href="#agent">エージェント</a></nav>
+      <dl class="term-list"><div id="llm"><dt>LLM <small>Large Language Model / 大規模言語モデル</small></dt><dd>たくさんの文章などから学び、入力された言葉の続きや返事を作るAIの一種です。説明文やコードを書けますが、正しさを保証する辞書や計算機ではありません。</dd></div><div id="model"><dt>AIモデル <small>AIが学習したデータのまとまり</small></dt><dd>AIの「頭脳」にあたるもの。Ollamaはそれを動かすアプリ、Qwen2.5-Coderはそのアプリで使えるモデルの名前です。1.5BなどのBは、モデルの規模を表す単位で、GBというファイル容量とは違います。</dd></div><div><dt>ローカルAI <small>自分のPCで処理するAI</small></dt><dd>モデルを自分のPCに保存して使う方法です。最初の取得やソフトの更新にはネット接続を使います。ローカルモデルを選ぶだけで、アプリ全体の通信がなくなるわけではありません。</dd></div><div id="api"><dt>API / APIキー <small>ソフト同士の窓口 / 秘密の合鍵</small></dt><dd>APIは、ほかのソフトに「これを処理して」と頼むための窓口です。クラウドAPIではAPIキーで利用者を識別し、料金が発生する場合があります。今回のOllamaの窓口はPC内にあり、キーは使いません。他人のキーを使ったり、自分のキーを公開したりしないでください。</dd></div><div id="token"><dt>トークン / コンテキスト <small>文章の数え方 / AIが一度に扱う範囲</small></dt><dd>トークンは文章を細かく分けた単位です。日本語の1文字＝1トークンとは限りません。コンテキストには質問・会話・返答などが入ります。長くすると必要なメモリも増えるので、最初は短い質問から始めます。</dd></div><div id="ram"><dt>RAM <small>PC全体で使う作業用メモリ</small></dt><dd>作業机の広さのようなものです。ブラウザやエディター、AIが共有して使います。ストレージの空き容量とは別物で、モデルを保存できてもRAM不足で動かない場合があります。</dd></div><div id="vram"><dt>GPU / VRAM <small>計算を助ける装置 / その専用メモリ</small></dt><dd>GPUは多数の計算を並行して行う装置。対応していればAIの計算にも使えます。VRAMは主に専用GPU上のメモリです。内蔵GPUの「共有GPUメモリ」を専用VRAMとして数えません。容量だけで対応可否や速度は決まりません。</dd></div><div id="terminal"><dt>ターミナル / PowerShell <small>文字で操作する画面 / 指示を解釈するソフト</small></dt><dd>ターミナルは文字でコマンドを入力する場所、PowerShellはWindowsでその指示を扱うソフトです。VS CodeのターミナルでもPowerShellを開けます。知らないコマンドを貼り付ける前に、何をするかを確認します。</dd></div><div><dt>拡張機能 <small>アプリに機能を追加するもの</small></dt><dd>ContinueはVS CodeにAIのチャット欄などを追加する拡張機能です。拡張機能自身がAIモデルというわけではありません。発行元と公式リンクを確認して入れましょう。</dd></div><div id="agent"><dt>AIエージェント <small>道具を使って作業を進める仕組み</small></dt><dd>会話に答えるだけでなく、ファイル編集やコマンド実行などを提案・実施する仕組みです。どこまで任せるかは権限と設定によります。本コースはChatを使い、生成コードは人が確認して保存します。</dd></div></dl>
+    </section>
+  </div>
+  <div class="reading-cta"><div><h2>全部分からなくても、始められます。</h2><p>最初のステップは、PCの情報を見るだけ。</p></div><a class="button button-primary" href="guide.html#step-1">PCを確認する <span aria-hidden="true">→</span></a></div>
+</main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
+    <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
+  </footer>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

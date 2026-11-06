@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VS Code、Cursor、Continue、Codexの役割・料金の考え方・ローカル対応を比較。">
+  <meta name="theme-color" content="#121212">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>エディターとAIツールの比較 — LLM START</title>
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/core.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-page="compare">
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="LLM START ホーム"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" hidden><span>メニュー</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <nav class="main-menu" id="main-menu" aria-label="メインナビゲーション">
+        <a href="guide.html" data-nav="guide">セットアップ</a>
+        <a href="learn.html" data-nav="learn">LLMの基礎</a>
+        <a href="models.html" data-nav="models">無料モデル</a>
+        <a href="compare.html" data-nav="compare" aria-current="page">ツール比較</a>
+        <a href="faq.html" data-nav="faq">困ったとき</a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <div class="storage-notice wrap" role="status" id="storage-notice" hidden>このブラウザでは進捗を保存できません。この画面内でチェックは使えますが、閉じると失われます。</div>
+  <main id="main" class="page-shell page-shell-wide">
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span aria-hidden="true">/</span><span>ツール比較</span></div>
+  <header class="page-intro"><p class="eyebrow">DIFFERENT TOOLS, DIFFERENT ROLES</p><h1>名前は似ていても、<br>役割はそれぞれ。</h1><p>エディター、AIとのつなぎ役、作業を進めるエージェント。<br>同じ種類の製品ではないので、役割から選びましょう。</p></header>
+  <p class="table-caption">確認日：2026-11-06。無料枠・機能・対応環境は変わります。表は横にスクロールできます。</p>
+  <div class="comparison-scroll" tabindex="0" role="region" aria-label="4つのツールの比較。横にスクロールできます"><table class="editor-table"><thead><tr><th scope="col">ツール</th><th scope="col">主な役割</th><th scope="col">無料枠・料金</th><th scope="col">ローカルAI対応</th><th scope="col">始めやすさ・制限</th></tr></thead><tbody><tr><th scope="row">VS Code</th><td>ファイルを編集するエディター</td><td>エディターは無料。追加するAIサービスの料金は別</td><td>Continue等の対応拡張機能でOllamaと接続。内蔵Ollamaプロバイダーは非推奨</td><td>日本語化できる。AI設定は別途必要。<a href="https://code.visualstudio.com/docs/agent-customization/language-models" target="_blank" rel="noopener noreferrer">公式仕様 ↗</a></td></tr><tr><th scope="row">Cursor</th><td>AIによる開発支援を備えるエディター／エージェント</td><td>Freeは月額0米ドル・AI利用に制限あり。有料プラン・別の利用料金あり</td><td>今回の公式資料から全機能をOllamaだけでローカル実行できるとは確認できず</td><td>AIをまとめて扱える構成。アカウント・利用枠・外部送信条件を確認。<a href="https://cursor.com/pricing" target="_blank" rel="noopener noreferrer">料金 ↗</a> · <a href="https://cursor.com/docs" target="_blank" rel="noopener noreferrer">仕様 ↗</a></td></tr><tr><th scope="row">Continue</th><td>エディターにAIのChat等を追加する拡張機能</td><td>拡張機能はApache 2.0。Ollamaのローカル推論にAPI料なし。外部モデルの料金は別</td><td>Ollamaを公式に案内。ローカル設定を使用</td><td>初回は設定ファイルを編集。画面は版で変わる。<a href="https://docs.continue.dev/guides/ollama-guide" target="_blank" rel="noopener noreferrer">連携 ↗</a> · <a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue" target="_blank" rel="noopener noreferrer">拡張機能 ↗</a></td></tr><tr><th scope="row">Codex</th><td>コードの調査・編集・実行を助けるAIエージェント</td><td>ChatGPTプランごとに利用枠・提供条件あり。API認証は別料金。無料プランでも範囲に制限</td><td>CLIの <code>--oss</code>・Ollamaプロバイダーを公式に案内。全画面・全機能で同じとは限らない</td><td>自動作業には権限・モデル適性・環境の理解が必要。<a href="https://learn.chatgpt.com/docs/developer-commands?surface=cli" target="_blank" rel="noopener noreferrer">CLI仕様 ↗</a> · <a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noopener noreferrer">料金・枠 ↗</a></td></tr></tbody></table></div>
+  <div class="article-body">
+    <section><h2>このガイドの標準コース</h2><p><strong>VS Code ＋ Ollama ＋ Continue</strong>です。エディター・モデル実行・AIへの質問欄を、ひとつずつ確認してつなぎます。最初からAIエージェントの自動実行を使わず、Chatの回答を確認して手動で保存します。</p><p>この選び方は、初心者向けの手順を統一するためです。ほかのツールが劣っているという評価ではありません。既存の環境や目的によって合う構成は変わります。</p></section>
+    <section><h2>VS CodeのOllama連携について</h2><p>現在のVS Code公式文書では、<strong>内蔵Ollamaプロバイダーは非推奨</strong>で、Ollamaチームの公式拡張機能への移行を案内しています。Continueとは別の経路です。VS Codeに最初からOllamaの全機能があり、設定なしで使えるとは考えないでください。</p><p><a href="https://code.visualstudio.com/docs/agent-customization/language-models" target="_blank" rel="noopener noreferrer">VS Code公式：AI language models ↗</a> · 確認日 2026-11-06</p></section>
+    <section id="terms"><h2>外部サービスを使う前の確認</h2><p>本コースはAPIキーの登録を案内しません。後でクラウドサービスへ進む場合は、料金だけでなく利用規約・年齢・地域条件を確認します。以下は確認日時点の案内で、契約条件の判断を代行するものではありません。</p><ul><li><strong>Cursor：</strong>18歳または居住地域の成人年齢のうち高い方が利用条件です。<a href="https://cursor.com/terms-of-service" target="_blank" rel="noopener noreferrer">公式利用規約（Eligibility）↗</a></li><li><strong>OpenAIの個人向けサービス：</strong>13歳以上、または国の同意可能年齢以上。18歳未満は保護者の許可が必要です。APIに同じ個人向け条件がそのまま適用されるわけではありません。<a href="https://openai.com/policies/terms-of-use/" target="_blank" rel="noopener noreferrer">Terms of Use ↗</a></li><li><strong>OpenAI API：</strong>開発者・ビジネス向けのServices Agreementを確認します。契約を適法に締結できること、組織を代表するなら権限があることが必要です。別途の課金・地域条件も確認してください。<a href="https://openai.com/policies/services-agreement/" target="_blank" rel="noopener noreferrer">Services Agreement ↗</a></li><li><strong>Continueのクラウドアカウント：</strong>現行の規約・年齢条件を確認できていないため、登録・クラウド利用の手順は掲載していません。ローカル利用は<a href="https://docs.continue.dev/guides/running-continue-without-internet" target="_blank" rel="noopener noreferrer">公式オフライン設定</a>を参照します。</li></ul><p class="source-note">確認日：2026-11-06。条件を満たさない場合に、年齢や認証を回避する方法は使わないでください。</p></section>
+  </div>
+  <div class="reading-cta"><div><h2>まずは、ひとつのコースで。</h2><p>ツール選びに迷ったら、最初の確認から進めましょう。</p></div><a class="button button-primary" href="guide.html#step-1">セットアップへ <span aria-hidden="true">→</span></a></div>
+</main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
+    <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
+  </footer>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

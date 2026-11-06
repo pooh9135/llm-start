@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="公式の配布容量と出典、確認日を掲載。PCに合わせて試すローカルAIモデルの候補。">
+  <meta name="theme-color" content="#121212">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>無料モデルを選ぶ — LLM START</title>
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/core.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-page="models">
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="LLM START ホーム"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" hidden><span>メニュー</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <nav class="main-menu" id="main-menu" aria-label="メインナビゲーション">
+        <a href="guide.html" data-nav="guide">セットアップ</a>
+        <a href="learn.html" data-nav="learn">LLMの基礎</a>
+        <a href="models.html" data-nav="models" aria-current="page">無料モデル</a>
+        <a href="compare.html" data-nav="compare">ツール比較</a>
+        <a href="faq.html" data-nav="faq">困ったとき</a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <div class="storage-notice wrap" role="status" id="storage-notice" hidden>このブラウザでは進捗を保存できません。この画面内でチェックは使えますが、閉じると失われます。</div>
+  <main id="main" class="page-shell page-shell-wide">
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span aria-hidden="true">/</span><span>無料モデル</span></div>
+  <header class="page-intro"><p class="eyebrow">START SMALL, FIND YOUR FIT</p><h1>最初のモデルは、<br>小さくていい。</h1><p>まずは動くことを確かめて、必要に応じて大きくする。<br>基本コースでは、コード向けのQwen2.5-Coderを使います。</p></header>
+  <div class="notice"><strong>公式の容量と、PCの目安を分けて見ましょう。</strong><p>容量はOllamaで確認した配布ファイルの値です。RAM・VRAMの記載は当サイトの選び方で、公式の最低要件や動作保証ではありません。OS・アプリ・会話の長さにもメモリを使います。情報確認日：2026-11-06。</p></div>
+  <div class="models-grid"><article class="model-card"><div class="model-card-top"><span class="tag">追加候補</span><span class="mono">0.5B</span></div><h2>Qwen2.5-Coder <span>0.5B</span></h2><p>最も小さい候補。回答の品質は限定的です。RAMが8 GB未満のPCでは標準コースの動作を保証できません。</p><dl class="model-facts"><div><dt>配布ファイル</dt><dd>398 MB</dd></div><div><dt>RAMの選び方</dt><dd>8 GB未満では実験的</dd></div><div><dt>GPUの目安</dt><dd>GPUなしでも試行可・低速の場合あり</dd></div></dl><div class="model-tag"><code>qwen2.5-coder:0.5b</code></div><p class="model-source"><a href="https://ollama.com/library/qwen2.5-coder:0.5b" target="_blank" rel="noopener noreferrer">公式の容量・タグ ↗</a> · <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct" target="_blank" rel="noopener noreferrer">モデルカード・ライセンス ↗</a><br>確認日：2026-11-06</p><a class="button button-secondary" href="guide.html#step-2">PCに合うか確認する <span aria-hidden="true">→</span></a></article>
+<article class="model-card"><div class="model-card-top"><span class="tag tag-green">最初の候補</span><span class="mono">1.5B</span></div><h2>Qwen2.5-Coder <span>1.5B</span></h2><p>短いコードの説明や、小さなHTMLを試すための軽量候補。最初はこのモデルで、PCへの負荷と回答の様子を確かめます。</p><dl class="model-facts"><div><dt>配布ファイル</dt><dd>986 MB</dd></div><div><dt>RAMの選び方</dt><dd>8 GB以上から試す目安</dd></div><div><dt>GPUの目安</dt><dd>専用GPUは必須ではない</dd></div></dl><div class="model-tag"><code>qwen2.5-coder:1.5b</code></div><p class="model-source"><a href="https://ollama.com/library/qwen2.5-coder:1.5b" target="_blank" rel="noopener noreferrer">公式の容量・タグ ↗</a> · <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct" target="_blank" rel="noopener noreferrer">モデルカード・ライセンス ↗</a><br>確認日：2026-11-06</p><a class="button button-secondary" href="guide.html#step-2">PCに合うか確認する <span aria-hidden="true">→</span></a></article>
+<article class="model-card"><div class="model-card-top"><span class="tag">追加候補</span><span class="mono">7B</span></div><h2>Qwen2.5-Coder <span>7B</span></h2><p>もう少し長いコードの相談に試せる候補。1.5Bより多くのメモリを使います。GPUの対応状況と実際の速度を確認してください。</p><dl class="model-facts"><div><dt>配布ファイル</dt><dd>4.7 GB</dd></div><div><dt>RAMの選び方</dt><dd>16〜32 GB以上から試す目安</dd></div><div><dt>GPUの目安</dt><dd>8 GB以上あればGPU実行を検討</dd></div></dl><div class="model-tag"><code>qwen2.5-coder:7b</code></div><p class="model-source"><a href="https://ollama.com/library/qwen2.5-coder:7b" target="_blank" rel="noopener noreferrer">公式の容量・タグ ↗</a> · <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct" target="_blank" rel="noopener noreferrer">モデルカード・ライセンス ↗</a><br>確認日：2026-11-06</p><a class="button button-secondary" href="guide.html#step-2">PCに合うか確認する <span aria-hidden="true">→</span></a></article>
+<article class="model-card"><div class="model-card-top"><span class="tag">追加候補</span><span class="mono">14B</span></div><h2>Qwen2.5-Coder <span>14B</span></h2><p>容量と処理負荷が大きい候補。小型モデルで接続を確認してから試しましょう。大きければ常に正確、という意味ではありません。</p><dl class="model-facts"><div><dt>配布ファイル</dt><dd>9.0 GB</dd></div><div><dt>RAMの選び方</dt><dd>32 GB以上から慎重に試す目安</dd></div><div><dt>GPUの目安</dt><dd>16 GB以上あればGPU実行を検討</dd></div></dl><div class="model-tag"><code>qwen2.5-coder:14b</code></div><p class="model-source"><a href="https://ollama.com/library/qwen2.5-coder:14b" target="_blank" rel="noopener noreferrer">公式の容量・タグ ↗</a> · <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct" target="_blank" rel="noopener noreferrer">モデルカード・ライセンス ↗</a><br>確認日：2026-11-06</p><a class="button button-secondary" href="guide.html#step-2">PCに合うか確認する <span aria-hidden="true">→</span></a></article></div>
+  <div class="article-body">
+    <section><h2>このモデルを選んだ理由</h2><p>最初の目標は、最高性能の比較ではなく<strong>短いコードをローカルで作る体験</strong>です。軽量な1.5Bの配布があり、Continue公式のOllamaガイドにも同じタグの設定例があります。これは「最新モデル」「必ず日本語が得意」「すべてのPCで快適」といった評価ではありません。</p><p>掲載したQwen2.5-Coderの4サイズのモデルカードはApache 2.0ライセンスを案内しています。利用・再配布ではライセンス本文を確認してください。<a href="https://docs.continue.dev/guides/ollama-guide" target="_blank" rel="noopener noreferrer">Continue × Ollama公式ガイド ↗</a></p></section>
+    <section><h2>別の世代を試すなら</h2><p><strong>Qwen3.5</strong>にも小型モデルがあります。公式配布ページでは4Bの容量が<strong>3.3〜4.0 GB</strong>と案内されています。形式により容量が異なるため、ダウンロード時の表示を確認してください。本コースと同じ品質・速度・必要メモリになるとは限りません。画像入力やAgentなどの追加機能は、使うアプリ側の対応確認も必要です。</p><p class="source-note"><a href="https://ollama.com/library/qwen3.5" target="_blank" rel="noopener noreferrer">OllamaのQwen3.5配布ページ ↗</a> · 確認日 2026-11-06。最新Ollamaでの対応状況と、モデルの利用条件を確認してから試してください。</p></section>
+    <section><h2>「無料」の範囲</h2><p>ここで紹介するのは、PCへダウンロードして実行するモデルです。このローカル推論にAPI利用料はかかりません。電気代・通信費・ストレージ・PCの費用は別にかかります。モデルの利用許諾や再配布の条件も、それぞれのライセンスに従います。</p><p>クラウド版サービスの無料枠とは違います。クラウドの有料モデルが無料で使えるようになる、という意味ではありません。</p></section>
+  </div>
+  <div class="reading-cta"><div><h2>自分のPCなら、どれがよさそう？</h2><p>RAMとGPUを選ぶと、最初に試す候補が分かります。</p></div><a class="button button-primary" href="guide.html#step-2">PCに合わせて選ぶ <span aria-hidden="true">→</span></a></div>
+</main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
+    <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
+  </footer>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

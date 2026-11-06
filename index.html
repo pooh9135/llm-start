@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PCの確認からAIでコードを作るまで。Windows向けの無料ローカルLLM導入ガイド。">
+  <meta name="theme-color" content="#121212">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>はじめてのローカルAIを、ここから。 — LLM START</title>
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/core.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-page="index">
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="LLM START ホーム"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" hidden><span>メニュー</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <nav class="main-menu" id="main-menu" aria-label="メインナビゲーション">
+        <a href="guide.html" data-nav="guide">セットアップ</a>
+        <a href="learn.html" data-nav="learn">LLMの基礎</a>
+        <a href="models.html" data-nav="models">無料モデル</a>
+        <a href="compare.html" data-nav="compare">ツール比較</a>
+        <a href="faq.html" data-nav="faq">困ったとき</a>
+        <a class="button button-small button-primary nav-cta" href="guide.html#step-1" data-start>ガイドを始める <span aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <div class="storage-notice wrap" role="status" id="storage-notice" hidden>このブラウザでは進捗を保存できません。この画面内でチェックは使えますが、閉じると失われます。</div>
+  <main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> LOCAL AI, YOUR FIRST STEP</p>
+      <h1 id="hero-title">はじめての<br>ローカルAIを、<br><span>ここから。</span></h1>
+      <p class="hero-description">専門知識がなくても大丈夫。<br>PCの確認からインストール、AIの起動まで、<br class="desktop-break">ひとつずつ分かりやすく案内します。</p>
+      <div class="hero-actions"><a class="button button-primary" href="guide.html#step-1">無料でセットアップを始める <span aria-hidden="true">→</span></a><a class="hero-secondary" href="learn.html">ローカルLLMについて知る <span aria-hidden="true">↗</span></a></div>
+      <ul class="hero-notes" aria-label="基本コースの特徴"><li><span aria-hidden="true">✓</span> APIキー不要</li><li><span aria-hidden="true">✓</span> Windows向け</li><li><span aria-hidden="true">✓</span> 全8ステップ</li></ul>
+    </div>
+    <figure class="local-scene">
+      <div class="scene-top"><span><span class="status-dot" aria-hidden="true"></span> YOUR LOCAL WORKSPACE</span><span class="scene-device">あなたのPC</span></div>
+      <div class="scene-canvas">
+        <div class="scene-grid" aria-hidden="true"></div>
+        <svg class="scene-chip" viewBox="0 0 420 270" role="img" aria-label="AIモデルを自分のPCの中で実行する仕組みのイメージ">
+          <defs><linearGradient id="chip-top" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#333d37"/><stop offset="1" stop-color="#19251f"/></linearGradient><linearGradient id="chip-edge" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3ecf8e" stop-opacity=".6"/><stop offset="1" stop-color="#194832" stop-opacity=".1"/></linearGradient></defs>
+          <g fill="none" stroke="#2f4138" stroke-width="1"><path d="m20 170 90-52 100 58 100-58 90 52M20 202l90-52 100 58 100-58 90 52M110 50v68M310 50v68M110 182v56M310 182v56"/><path d="m44 105 66 38m200 0 65-38M70 245l140-80 140 80" stroke-dasharray="3 5"/></g>
+          <path d="m112 122 98-56 98 56v32l-98 56-98-56z" fill="#101712" stroke="#3b5144"/>
+          <path d="m112 122 98 56 98-56v16l-98 56-98-56z" fill="url(#chip-edge)"/>
+          <path d="m112 111 98-56 98 56-98 57z" fill="url(#chip-top)" stroke="#62806e"/>
+          <path d="m135 111 75-43 75 43-75 44z" fill="#17281e" stroke="#387154"/>
+          <g fill="none" stroke="#658574" stroke-width="2"><path d="m128 91-15-9m30 0-15-9m30 0-15-9m30 0-15-9m126 36 15-9m-30 0 15-9m-30 0 15-9m-30 0 15-9M128 142l-15 9m30 0-15 9m30 0-15 9m30 0-15 9m126-36 15 9m-30 0 15 9m-30 0 15 9m-30 0 15 9"/></g>
+          <g fill="#b5f3cf" text-anchor="middle" font-family="Consolas, monospace"><text x="210" y="114" font-size="24" transform="rotate(-1 210 111)">LOCAL AI</text></g>
+          <circle cx="110" cy="50" r="4" fill="#3ecf8e"/><circle cx="310" cy="238" r="3" fill="#6b9b80"/>
+        </svg>
+        <div class="scene-label"><span class="status-dot" aria-hidden="true"></span> モデルはPCの中で実行</div>
+      </div>
+      <div class="scene-flow" aria-label="接続する3つのツール"><div><span class="tool-symbol" aria-hidden="true">&lt;/&gt;</span><span>VS Code<small>コードを書く場所</small></span></div><span class="flow-arrow" aria-hidden="true">→</span><div><span class="tool-symbol" aria-hidden="true">↔</span><span>Continue<small>AIとのつなぎ役</small></span></div><span class="flow-arrow" aria-hidden="true">→</span><div><span class="tool-symbol" aria-hidden="true">▧</span><span>Ollama<small>AIを動かすアプリ</small></span></div></div>
+      <figcaption>しくみのイメージ。ソフトの更新・ダウンロードには通信を使います。</figcaption>
+    </figure>
+  </section>
+  <div class="wrap resume-banner" id="home-resume" hidden><div><span class="status-dot" aria-hidden="true"></span><strong>前回の続きから始められます。</strong><p><span data-progress-count>0</span> / 8 ステップ完了。進捗はこのブラウザに保存されています。</p></div><a class="button button-secondary" href="guide.html" data-resume>続きから再開 <span aria-hidden="true">→</span></a></div>
+  <section class="path-section wrap" aria-labelledby="path-title">
+    <div class="section-heading"><div><p class="eyebrow">THE ROAD TO YOUR FIRST AI</p><h2 id="path-title">小さな一歩を、3つ。</h2></div><p>やることは、順番に。<br>分からない言葉も、その場で説明します。</p></div>
+    <div class="path-grid">
+      <a class="path-card" href="guide.html#step-1"><div class="path-card-top"><span class="path-number">01</span><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="5" width="26" height="19" rx="2"/><path d="M11 29h10M16 24v5M8 11h7M8 15h12"/></svg></div><p class="card-kicker">まずは準備から</p><h3>PCを確認する</h3><p>メモリやGPUを調べて、<br>無理なく動くAIを見つけましょう。</p><span class="card-link">STEP 1–2 <span aria-hidden="true">↗</span></span></a>
+      <a class="path-card" href="guide.html#step-3"><div class="path-card-top"><span class="path-number">02</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v18m-7-7 7 7 7-7M5 22v6h22v-6"/></svg></div><p class="card-kicker">公式サイトから、ひとつずつ</p><h3>必要なソフトを入れる</h3><p>VS CodeとOllamaを入れて、<br>AIを使う場所を整えます。</p><span class="card-link">STEP 3–6 <span aria-hidden="true">↗</span></span></a>
+      <a class="path-card" href="guide.html#step-7"><div class="path-card-top"><span class="path-number">03</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 5h20a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H14l-8 5v-5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM10 12l4 4-4 4m8 0h5"/></svg></div><p class="card-kicker">できた、を体験する</p><h3>AIを使ってみる</h3><p>短いお願いからコードを作り、<br>自分のブラウザで開いてみましょう。</p><span class="card-link">STEP 7–8 <span aria-hidden="true">↗</span></span></a>
+    </div>
+  </section>
+  <section class="local-intro wrap" aria-labelledby="local-title"><div class="local-intro-label"><span class="outline-icon" aria-hidden="true">⌂</span><span>LOCAL FIRST</span></div><div><h2 id="local-title">AIを、あなたのPCで動かす。</h2><p>このコースは、無料で配布されているモデルを自分のPCで動かします。<br>ローカル推論にAPI利用料はかかりません。電気代・通信費は別です。</p></div><a class="text-link" href="learn.html#local-cloud">クラウドAIとの違い <span aria-hidden="true">→</span></a></section>
+  <section class="resources-section wrap" aria-labelledby="resources-title"><div class="section-heading"><div><p class="eyebrow">LEARN AT YOUR OWN PACE</p><h2 id="resources-title">知りたいことから、少しずつ。</h2></div><a class="text-link" href="sources.html">公式の出典を見る <span aria-hidden="true">↗</span></a></div><div class="resource-grid"><a href="learn.html" class="resource-link"><span class="resource-icon" aria-hidden="true">Aa</span><div><h3>むずかしい言葉を、やさしく。</h3><p>LLM・API・RAM。基本の言葉を解説。</p></div><span aria-hidden="true">↗</span></a><a href="compare.html" class="resource-link"><span class="resource-icon" aria-hidden="true">⇄</span><div><h3>ツールの違いを知る。</h3><p>エディター、拡張機能、AIエージェント。</p></div><span aria-hidden="true">↗</span></a></div></section>
+</main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-main"><div><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">›_</span><span>LLM <b>START</b><span class="brand-period">.</span></span></a><p>自分のPCから、AIのある日常へ。</p></div><nav aria-label="フッターナビゲーション"><a href="guide.html#step-1">セットアップガイド</a><a href="faq.html">トラブルシューティング</a><a href="sources.html">出典・更新情報</a></nav></div>
+    <div class="wrap footer-bottom"><p>独立した非公式の学習ガイド。各製品の運営元とは提携していません。</p><p>情報確認：<time datetime="2026-11-06">2026.11.06</time></p></div>
+    <p class="wrap privacy-line">APIキー・個人情報の入力欄はありません。進捗とPCの選択項目は、このブラウザ内に保存します。<a href="sources.html#privacy">データの取り扱い</a></p>
+  </footer>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

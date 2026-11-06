@@ -6,10 +6,11 @@
   if (!core || !catalog) return;
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
-  const key = 'llm-start-state-v2';
+  const key = 'llm-start-state-v3';
+  const legacyKey = 'llm-start-state-v2';
   let storageAvailable = true;
   let raw = null;
-  try { raw = JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) { if (!(e instanceof SyntaxError)) storageAvailable = false; }
+  try { raw = JSON.parse(localStorage.getItem(key) ?? localStorage.getItem(legacyKey) ?? 'null'); } catch (e) { if (!(e instanceof SyntaxError)) storageAvailable = false; }
   let state = core.normalizeState(raw);
   const announce = text => { $('#announcement').textContent = text; };
   function save() {
@@ -32,8 +33,8 @@
   function renderProgress() {
     const count = state.completed.length;
     $$('[data-progress-count]').forEach(el => { el.textContent = count; });
-    $$('[data-progress-percent]').forEach(el => { el.textContent = `${Math.round(count / 8 * 100)}%`; });
-    $$('[data-progress]').forEach(el => { el.value = count; el.setAttribute('aria-valuetext', `${count} / 8 ステップ完了`); });
+    $$('[data-progress-percent]').forEach(el => { el.textContent = `${Math.round(count / core.stepCount * 100)}%`; });
+    $$('[data-progress]').forEach(el => { el.value = count; el.setAttribute('aria-valuetext', `${count} / ${core.stepCount} ステップ完了`); });
     $$('[data-complete]').forEach(el => { el.disabled = false; el.checked = state.completed.includes(Number(el.dataset.complete)); });
     $$('[data-step-link]').forEach(el => { const done = state.completed.includes(Number(el.dataset.stepLink)); el.classList.toggle('is-complete', done); $('.step-state', el).textContent = done ? '（完了）' : ''; });
     $$('[data-start]').forEach(el => {
@@ -45,7 +46,7 @@
     const homeResume = $('#home-resume');
     if (homeResume) homeResume.hidden = count === 0 && state.currentStep === 1;
     const allDone = $('#all-done');
-    if (allDone) allDone.hidden = count !== 8;
+    if (allDone) allDone.hidden = count !== core.stepCount;
   }
 
   function renderModel() {
@@ -89,7 +90,8 @@
   function showStep({navigate = false} = {}) {
     if (!steps.length) return;
     const match = /^#step-([1-8])$/.exec(location.hash);
-    const number = match ? Number(match[1]) : state.currentStep;
+    const requested = match ? Number(match[1]) : state.currentStep;
+    const number = core.stepIds.includes(requested) ? requested : requested === 2 ? 3 : state.currentStep;
     state.currentStep = number;
     const target = $(`#step-${number}`);
     steps.forEach(el => { el.hidden = Number(el.dataset.step) !== number; });
@@ -97,8 +99,8 @@
       if (Number(el.dataset.stepLink) === number) el.setAttribute('aria-current', 'step');
       else el.removeAttribute('aria-current');
     });
-    document.title = `STEP ${number}：${$('h2', target).textContent} — LLM START`;
-    if (!match) history.replaceState(null, '', `#step-${number}`);
+    document.title = `STEP ${core.stepIds.indexOf(number) + 1}：${$('h2', target).textContent} — LLM START`;
+    if (!match || number !== requested) history.replaceState(null, '', `#step-${number}`);
     if (navigate) {
       if (stepMenu && mobileGuide.matches) stepMenu.open = false;
       requestAnimationFrame(() => { target.scrollIntoView({block: 'start', behavior: 'instant'}); $('h2', target).focus({preventScroll: true}); });
@@ -108,7 +110,7 @@
   $$('[data-complete]').forEach(el => el.addEventListener('change', () => {
     state = core.setComplete(state, Number(el.dataset.complete), el.checked);
     renderProgress(); save();
-    announce(state.completed.length === 8 ? '全8ステップが完了しました。' : `${state.completed.length} / 8 ステップ完了。${storageAvailable ? '進捗を保存しました。' : 'この画面内でチェックしました。'}`);
+    announce(state.completed.length === core.stepCount ? '全7ステップが完了しました。' : `${state.completed.length} / ${core.stepCount} ステップ完了。${storageAvailable ? '進捗を保存しました。' : 'この画面内でチェックしました。'}`);
   }));
   const reset = $('#reset-progress');
   if (reset) reset.addEventListener('click', () => { state.completed = []; renderProgress(); save(); const panel = reset.closest('details'); panel.open = false; $('summary', panel).focus(); announce('完了チェックをリセットしました。'); });
@@ -170,7 +172,7 @@
     if (e.key !== key && e.key !== null) return;
     try { state = core.normalizeState(JSON.parse(e.newValue || 'null')); } catch { state = core.normalizeState(null); }
     const ownStep = /^#step-([1-8])$/.exec(location.hash);
-    if (steps.length && ownStep) state.currentStep = Number(ownStep[1]);
+    if (steps.length && ownStep && core.stepIds.includes(Number(ownStep[1]))) state.currentStep = Number(ownStep[1]);
     renderModel(); renderProgress();
   });
   renderModel(); renderProgress(); showStep(); openHashDetail(); save();

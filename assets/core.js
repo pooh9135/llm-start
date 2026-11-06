@@ -6,6 +6,8 @@
   else root.LLMCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+  const stepIds = Object.freeze([1, 3, 4, 5, 6, 7, 8]);
+  const stepCount = stepIds.length;
   const modelIds = Object.freeze(['qwen2.5-coder:0.5b', 'qwen2.5-coder:1.5b', 'qwen2.5-coder:7b', 'qwen2.5-coder:14b']);
   const values = Object.freeze({ram: ['unknown', 'low', '8', '16', '32', '64'], gpu: ['unknown', 'integrated', 'nvidia', 'amd', 'intel', 'other'], vram: ['unknown', 'low', '4', '8', '12', '16', '24']});
   function normalizeState(input) {
@@ -15,9 +17,9 @@
     for (const key of Object.keys(values)) specs[key] = values[key].includes(s[key]) ? s[key] : 'unknown';
     if (specs.gpu === 'integrated') specs.vram = 'unknown';
     return {
-      version: 2,
-      completed: Array.isArray(raw.completed) ? [...new Set(raw.completed.filter(n => Number.isInteger(n) && n >= 1 && n <= 8))].sort((a, b) => a - b) : [],
-      currentStep: Number.isInteger(raw.currentStep) && raw.currentStep >= 1 && raw.currentStep <= 8 ? raw.currentStep : 1,
+      version: 3,
+      completed: Array.isArray(raw.completed) ? [...new Set(raw.completed.filter(n => stepIds.includes(n)))].sort((a, b) => a - b) : [],
+      currentStep: stepIds.includes(raw.currentStep) ? raw.currentStep : raw.currentStep === 2 ? 3 : 1,
       specs,
       manualModel: modelIds.includes(raw.manualModel) ? raw.manualModel : null
     };
@@ -38,7 +40,7 @@
   }
   function setComplete(state, step, checked) {
     const s = normalizeState(state);
-    if (!Number.isInteger(step) || step < 1 || step > 8) return s;
+    if (!stepIds.includes(step)) return s;
     s.completed = checked ? [...new Set([...s.completed, step])].sort((a,b) => a-b) : s.completed.filter(n => n !== step);
     return s;
   }
@@ -46,5 +48,5 @@
     const id = modelIds.includes(tag) ? tag : modelIds[1];
     return ['name: My Local AI', 'version: 1.0.0', 'schema: v1', 'models:', '  - name: Local Coder', '    provider: ollama', `    model: ${id}`, '    apiBase: http://127.0.0.1:11434', '    roles:', '      - chat', '    defaultCompletionOptions:', '      contextLength: 4096'].join('\n');
   }
-  return Object.freeze({modelIds, normalizeState, recommend, selectedModel, setComplete, configFor});
+  return Object.freeze({stepIds, stepCount, modelIds, normalizeState, recommend, selectedModel, setComplete, configFor});
 });

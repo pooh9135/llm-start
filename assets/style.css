@@ -564,3 +564,7 @@ td a { color: #d3e7dc; text-decoration: underline; }
   .guide-step *, .article-body *, .faq-item * { color: #111 !important; background: #fff !important; }
   .code-box pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 }
+
+.model-picker-section { max-width: 800px; margin: 42px auto; scroll-margin-top: 100px; }
+.model-picker-section > h2 { font-size: 25px; font-weight: 500; }
+.model-picker-section > p { color: var(--muted); margin-top: 15px; }

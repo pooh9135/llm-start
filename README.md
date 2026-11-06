@@ -2,7 +2,7 @@
 
 はじめてのローカルAIを、ここから。
 
-WindowsでVS Code・Ollama・Continueの導入、HTMLの保存と実行までを案内する、日本語の静的ガイドサイトです。
+VS Codeのインストールから始め、Ollama・Continueの導入、HTMLの保存と実行までを6ステップで案内する、Windows向けの日本語ガイドサイトです。
 
 ## サイト
 

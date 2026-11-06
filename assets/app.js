@@ -117,18 +117,41 @@
   if (reset) reset.addEventListener('click', () => { state.completed = []; renderProgress(); save(); const panel = reset.closest('details'); panel.open = false; $('summary', panel).focus(); announce('完了チェックをリセットしました。'); });
   $$('a[href^="#step-"]').forEach(link => link.addEventListener('click', () => { if (link.getAttribute('href') === location.hash) showStep({navigate: true}); }));
 
+  function copyDuringClick(text) {
+    // Keep this compatibility path inside the original user gesture. Some embedded
+    // browsers deny it after awaiting the asynchronous clipboard permission.
+    const active = document.activeElement;
+    const area = document.createElement('textarea');
+    area.value = text; area.readOnly = true; area.tabIndex = -1;
+    area.className = 'clipboard-helper'; area.setAttribute('aria-label', 'コピーするテキスト');
+    let copied = false;
+    try {
+      document.body.append(area); area.focus({preventScroll: true}); area.select();
+      area.setSelectionRange(0, area.value.length);
+      copied = document.execCommand('copy');
+    } catch { /* Try the standard clipboard API when this path is unavailable. */ }
+    finally { area.remove(); if (active instanceof HTMLElement) active.focus({preventScroll: true}); }
+    return Boolean(copied);
+  }
   async function copyText(text) {
-    try { if (!navigator.clipboard?.writeText) throw new Error('Unavailable'); await navigator.clipboard.writeText(text); return true; }
-    catch {
-      const active = document.activeElement;
-      const area = document.createElement('textarea');
-      area.value = text; area.className = 'clipboard-helper'; area.setAttribute('aria-label', 'コピーするテキスト');
-      document.body.append(area); area.focus(); area.select();
-      let copied = false;
-      try { copied = document.execCommand('copy'); } catch { /* User can select text manually. */ }
-      finally { area.remove(); if (active instanceof HTMLElement) active.focus({preventScroll: true}); }
-      return Boolean(copied);
-    }
+    if (copyDuringClick(text)) return true;
+    let timeout;
+    try {
+      if (!navigator.clipboard?.writeText) return false;
+      const written = navigator.clipboard.writeText(text).then(() => true, () => false);
+      return await Promise.race([written, new Promise(resolve => { timeout = setTimeout(() => resolve(false), 2000); })]);
+    } catch { return false; }
+    finally { clearTimeout(timeout); }
+  }
+  function selectCode(source) {
+    try {
+      const selection = window.getSelection();
+      if (!selection) return false;
+      source.closest('pre')?.focus({preventScroll: true});
+      const range = document.createRange(); range.selectNodeContents(source);
+      selection.removeAllRanges(); selection.addRange(range);
+      return true;
+    } catch { return false; }
   }
   const timers = new WeakMap();
   $$('[data-copy]').forEach(button => {
@@ -136,18 +159,28 @@
     const label = $('.code-head > span', button.closest('.code-box'))?.textContent || 'テキスト';
     button.setAttribute('aria-label', `${label}をコピー`);
     button.addEventListener('click', async () => {
+      if (button.getAttribute('aria-busy') === 'true') return;
       const source = document.getElementById(button.dataset.copy);
       if (!source) return;
-      const text = source.textContent.trim();
-      const success = await copyText(text);
       clearTimeout(timers.get(button));
+      const text = source.textContent.trim();
+      // Start copying before changing focus or awaiting any promise.
+      const result = copyText(text);
+      button.setAttribute('aria-busy', 'true'); button.textContent = 'コピー中…';
+      const success = await result;
+      button.removeAttribute('aria-busy');
       button.textContent = success ? 'コピーしました' : 'コピーできません';
       let feedback = $('.copy-feedback', button.closest('.code-box'));
       if (!feedback) { feedback = document.createElement('p'); feedback.className = 'copy-feedback'; button.closest('.code-box').append(feedback); }
-      feedback.textContent = success ? 'コピーしました。指定された入力先に貼り付けてください。' : 'コピーできませんでした。コードの文字を選択してコピーしてください。';
+      const selected = !success && selectCode(source);
+      feedback.textContent = success
+        ? 'コピーしました。指定された入力先に貼り付けてください。'
+        : selected
+          ? '自動コピーできなかったため、コードの文字を選択しました。Windowsは Ctrl + C、Macは ⌘ + C でコピーしてください。スマートフォンは選択部分を長押しして「コピー」を選びます。'
+          : 'コピーできませんでした。コードの文字を選択してコピーしてください。';
       feedback.classList.toggle('copy-error', !success);
       announce(feedback.textContent);
-      timers.set(button, setTimeout(() => { button.textContent = 'コピー'; feedback.remove(); }, 3500));
+      timers.set(button, setTimeout(() => { button.textContent = 'コピー'; if (success) feedback.remove(); }, 3500));
     });
   });
 
